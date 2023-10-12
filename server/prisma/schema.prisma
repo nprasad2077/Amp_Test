@@ -17,3 +17,13 @@ model User {
   updatedAt DateTime @updatedAt
   username  String   @unique
 }
+
+model Player {
+  city      String?
+  createdAt DateTime @default(now())
+  games     String?
+  id        String   @id @default(cuid())
+  ident     Int
+  sport     String?
+  updatedAt DateTime @updatedAt
+}
