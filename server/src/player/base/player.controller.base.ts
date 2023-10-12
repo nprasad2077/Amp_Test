@@ -38,6 +38,9 @@ export class PlayerControllerBase {
   @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Post()
   @swagger.ApiCreatedResponse({ type: Player })
+  @swagger.ApiBody({
+    type: PlayerCreateInput,
+  })
   @nestAccessControl.UseRoles({
     resource: "Player",
     action: "create",
@@ -128,6 +131,9 @@ export class PlayerControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: Player })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: PlayerUpdateInput,
+  })
   @nestAccessControl.UseRoles({
     resource: "Player",
     action: "update",

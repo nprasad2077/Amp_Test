@@ -38,6 +38,9 @@ export class UserControllerBase {
   @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Post()
   @swagger.ApiCreatedResponse({ type: User })
+  @swagger.ApiBody({
+    type: UserCreateInput,
+  })
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "create",
@@ -128,6 +131,9 @@ export class UserControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: User })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: UserUpdateInput,
+  })
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "update",
